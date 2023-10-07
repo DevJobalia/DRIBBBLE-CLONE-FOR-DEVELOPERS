@@ -1,8 +1,68 @@
+# Project Name
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+Before you begin, ensure you have met the following requirements:
+
+- **Node.js**: Make sure you have Node.js installed on your machine. You can download it from [nodejs.org](https://nodejs.org/).
+
+### Project Setup
+
+1. Create a new Next.js project using `create-next-app`:
+
+   ```bash
+   npx create-next-app@latest ./
+   ```
+
+   This command bootstraps a new Next.js project in the current directory. With the option to use `tailwind css` selected
+
+### Package Installation
+
+Install the following packages and dependencies:
+
+```bash
+npm install @headlessui/react cloudinary jsonwebtoken @types/jsonwebtoken graphql-request next-auth
+```
+
+```bash
+npm i @grafbase/sdk --save-dev
+```
+
+These packages provide essential functionality for your project.
+
+### Installation
+
+1. Clone the repo:
+
+   ```bash
+   git clone https://github.com/your-username/your-project.git
+   ```
+
+2. Navigate to the project folder:
+
+   ```bash
+   cd your-project
+   ```
+
+3. Install dependencies:
+
+   ```bash
+   npm install
+   # or
+   yarn
+   # or
+   pnpm install
+   # or
+   bun install
+   ```
+
+### Running the Project
+
+To start the development server, run the following command:
 
 ```bash
 npm run dev
@@ -18,19 +78,26 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
+### Font Optimization
+
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
+## Contributing
 
-To learn more about Next.js, take a look at the following resources:
+Contributions are what make the open-source community such an amazing place to be, learn, and create. Any contributions you make are greatly appreciated.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/YourFeature`)
+3. Commit your Changes (`git commit -m 'Add some YourFeature'`)
+4. Push to the Branch (`git push origin feature/YourFeature`)
+5. Open a Pull Request
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## License
 
-## Deploy on Vercel
+Distributed under the MIT License. See `LICENSE` for more information.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Contact
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Your Name - [@YourTwitter](https://twitter.com/YourTwitter) - your.email@example.com
+
+Project Link: [https://github.com/your-username/your-project](https://github.com/your-username/your-project)
