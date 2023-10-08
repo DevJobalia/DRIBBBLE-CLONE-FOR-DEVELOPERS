@@ -2,6 +2,12 @@
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+## Tech Stack
+
+1. next.js, typescript, react
+2. tailwind css
+3. graphbase
+
 ## Getting Started
 
 ### Prerequisites
@@ -30,6 +36,10 @@ npm install @headlessui/react cloudinary jsonwebtoken @types/jsonwebtoken graphq
 
 ```bash
 npm i @grafbase/sdk --save-dev
+```
+
+```bash
+npx grafbase init --config-format typescript
 ```
 
 These packages provide essential functionality for your project.
