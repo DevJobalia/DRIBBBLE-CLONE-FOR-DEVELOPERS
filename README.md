@@ -6,7 +6,11 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 1. next.js, typescript, react
 2. tailwind css
-3. graphbase
+3. graphbase Db using graphql to query API
+4. NextAuth.js: useCLient component => not rendered in server
+   4.1 `getProvider, signIn`
+   4.2 For each signin one provider
+   4.3 GOOGLE OAUTH
 
 ## Getting Started
 
