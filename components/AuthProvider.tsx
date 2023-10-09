@@ -23,7 +23,7 @@ const AuthProvider = () => {
       setProviders(res);
     };
     fetchProviders();
-  });
+  }, []);
   if (providers) {
     return (
       <div>
