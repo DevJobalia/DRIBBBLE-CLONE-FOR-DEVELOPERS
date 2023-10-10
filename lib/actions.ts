@@ -1,5 +1,9 @@
 import { ProjectForm } from "@/common.types";
-import { createUserMutation, getUserQuery } from "@/graphql";
+import {
+  createProjectMutation,
+  createUserMutation,
+  getUserQuery,
+} from "@/graphql";
 import { GraphQLClient } from "graphql-request";
 const isProduction = process.env.NODE_ENV === "production";
 const apiUrl = isProduction
@@ -30,8 +34,8 @@ export const getUser = (email: string) => {
 export const createUser = (
   name: string,
   email: string,
-  avatarUrl: string,
-  description: any
+  avatarUrl: string
+  // description: any
 ) => {
   client.setHeader("x-api-key", apiKey);
   const variables = {
@@ -39,10 +43,20 @@ export const createUser = (
       name: name,
       email: email,
       avatarUrl: avatarUrl,
-      description: description,
+      // description: description,
     },
   };
   return makeGraphQLRequest(createUserMutation, variables);
+};
+
+export const fetchToken = async () => {
+  try {
+    // NEXT AUTH.JS STORES TOKEN IN BELOW URL
+    const response = await fetch(`${serverUrl}/api/auth/token`);
+    return response.json();
+  } catch (error) {
+    throw error;
+  }
 };
 
 export const uploadImage = async (imagePath: string) => {
@@ -63,4 +77,17 @@ export const createNewProject = async (
   token: string
 ) => {
   const imageUrl = await uploadImage(form.image);
+  if (imageUrl) {
+    client.setHeader("Authorization", `Bearer ${token}`);
+    const variables = {
+      input: {
+        ...form,
+        image: imageUrl.url,
+        createdBy: {
+          link: creatorId,
+        },
+      },
+    };
+    return makeGraphQLRequest(createProjectMutation, variables);
+  }
 };
