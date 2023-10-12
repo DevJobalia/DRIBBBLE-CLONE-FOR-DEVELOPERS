@@ -3,6 +3,8 @@ import {
   createProjectMutation,
   createUserMutation,
   getUserQuery,
+  projectsQueryAll,
+  projectsQueryFilter,
 } from "@/graphql";
 import { GraphQLClient } from "graphql-request";
 const isProduction = process.env.NODE_ENV === "production";
@@ -90,4 +92,33 @@ export const createNewProject = async (
     };
     return makeGraphQLRequest(createProjectMutation, variables);
   }
+};
+
+// export const fetchAllProjects = async (
+//   category?: string | null,
+//   endcursor?: string | null
+// ) => {
+//   try {
+//     client.setHeader("x-api-key", apiKey);
+
+//     return makeGraphQLRequest(projectsQuery, { endcursor, category });
+//   } catch (error) {
+//     console.error("Dev: ", error);
+//   }
+// };
+export const fetchAllProjects = (
+  category?: string | null,
+  endcursor?: string | null
+) => {
+  client.setHeader("x-api-key", apiKey);
+
+  if (category) {
+    return makeGraphQLRequest(projectsQueryFilter, {
+      category,
+      endcursor,
+    });
+  }
+  return makeGraphQLRequest(projectsQueryAll, {
+    endcursor,
+  });
 };
