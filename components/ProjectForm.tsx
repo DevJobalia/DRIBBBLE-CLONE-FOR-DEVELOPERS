@@ -71,12 +71,17 @@ const ProjectForm = ({ type, session, project }: Props) => {
 
         router.push("/");
       }
+      if (type === "edit") {
+        await createNewProject(form, session?.user?.id, token);
+
+        router.push("/");
+      }
     } catch (error) {
-      // alert(
-      //   `Failed to ${
-      //     type === "create" ? "create" : "edit"
-      //   } a project. Try again!`
-      // );
+      alert(
+        `Failed to ${
+          type === "create" ? "create" : "edit"
+        } a project. Try again!`
+      );
       console.log(error);
     } finally {
       setSubmitting(false);
