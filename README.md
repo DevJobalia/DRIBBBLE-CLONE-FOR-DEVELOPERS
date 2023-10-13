@@ -4,12 +4,18 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Tech Stack
 
-1. next.js, typescript, react
-2. tailwind css
-3. graphbase Db using graphql to query API
+1. next.js
+   - usePathname
+   - useRouter
+   - useSearchParams
+2. typescript
+   - as keyword
+3. react
+4. tailwind css
+5. graphbase Db using graphql to query API
    - in graphql using client.request is used to send query request to api
    - based on query it performs operation and provides response. hence no need to specify http methods like get or post
-4. NextAuth.js: useCLient component => not rendered in server
+6. NextAuth.js: useCLient component => not rendered in server
    4.1 `getProvider, signIn`
    4.2 For each signin one provider
    4.3 GOOGLE OAUTH
@@ -165,3 +171,9 @@ Here's how it typically works:
 7. **Authorization Logic**: The server then checks whether the identified user has the necessary permissions to perform the requested action. It may use the information in the token's claims, consult a database, or rely on other authorization mechanisms.
 
 In summary, the "Bearer TOKEN" in the "Authorization" header is simply a means of including the token with the request. The server decodes and verifies the token to identify the user and determine whether they have the appropriate permissions to perform the action. The actual logic for associating the token with a user and authorizing the request is implemented on the server, typically in the authentication and authorization middleware or within the GraphQL resolver functions.
+
+# Server Side hence more fast loading
+
+# Pagination in graphql
+
+using startCursor
