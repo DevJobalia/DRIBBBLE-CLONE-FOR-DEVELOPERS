@@ -8,7 +8,7 @@ import FormField from "./FormField";
 import Button from "./Button";
 import CustomMenu from "./CustomMenu";
 import { categoryFilters } from "@/constants";
-import { createNewProject, fetchToken } from "@/lib/actions";
+import { createNewProject, fetchToken, updateProject } from "@/lib/actions";
 import { FormState, ProjectInterface, SessionInterface } from "@/common.types";
 
 type Props = {
@@ -72,7 +72,7 @@ const ProjectForm = ({ type, session, project }: Props) => {
         router.push("/");
       }
       if (type === "edit") {
-        await createNewProject(form, session?.user?.id, token);
+        await updateProject(form, project?.id as string, token);
 
         router.push("/");
       }

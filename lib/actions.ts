@@ -8,6 +8,7 @@ import {
   getUserQuery,
   projectsQueryAll,
   projectsQueryFilter,
+  updateProjectMutation,
 } from "@/graphql";
 import { GraphQLClient } from "graphql-request";
 const isProduction = process.env.NODE_ENV === "production";
@@ -127,4 +128,38 @@ export const getUserProjects = (id: string, last?: number) => {
 export const deleteProject = (id: string, token: string) => {
   client.setHeader("Authorization", `Bearer ${token}`);
   return makeGraphQLRequest(deleteProjectMutation, { id });
+};
+
+export const updateProject = async (
+  form: ProjectForm,
+  projectId: string,
+  token: string
+) => {
+  function isBase64URL(url: string) {
+    // Regular expression to match base64 URL pattern
+    const base64Pattern = /^data:(.*?);base64,/;
+
+    // Test the URL against the pattern
+    return base64Pattern.test(url);
+  }
+
+  let updatedForm = { ...form };
+  const isUploadingImage = isBase64URL(form.image);
+  if (isUploadingImage) {
+    const imageUrl = await uploadImage(form.image);
+    if (imageUrl) {
+      updatedForm = {
+        ...form,
+        image: imageUrl.url,
+      };
+    }
+  }
+
+  const variables = {
+    id: projectId,
+    input: updatedForm,
+  };
+
+  client.setHeader("Authorization", `Bearer ${token}`);
+  return makeGraphQLRequest(updateProjectMutation, variables);
 };
